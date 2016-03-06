@@ -1,0 +1,117 @@
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button {
+-webkit-appearance: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    overflow: hidden;
+}
+
+li,
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+#canvas {
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+    width:100%;
+    overflow: hidden;
+}
+#gal li {
+    width:100%;
+    background-color: #fff;
+    position: absolute;
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    -webkit-backface-visibility: hidden; //禁止元素在动画过程中闪白
+    overflow: hidden;
+    height: 100%;
+}
+
+
+
+/*page1 定位*/
+.mainhead
+{
+    display: block;
+    position: absolute;
+    width:100%;
+}
+
+
+
+#nav
+{
+    position: fixed;
+    left: 3.65%;
+    width: 3%;
+    bottom:5%;
+    z-index: 10;
+}
+
+#nav li
+{
+	display: block;
+    width: 100%;
+    margin-top: 80%;
+    border: 1px solid #C9C9C9;
+    border-radius: 100px;
+}
+
+#downarrow
+{
+	width: 100%;
+	height: 10%;
+	display: block;
+	position: fixed;
+	z-index: 6;
+	bottom: 0px;
+
+}
+@keyframes showy
+    {
+        from{bottom: 10px; opacity:1;}
+        to{bottom: 26px;opacity:0.3}
+    }
+@-webkit-keyframes showy
+    {
+        from{bottom: 10px; opacity:1;}
+        to{bottom: 26px;opacity:0.3}
+
+    }
+#downarrow img
+{
+	display: block;
+    position: fixed;
+    width: 9.11%;
+    bottom: 4.18%;
+    z-index: 5;
+    left: 50%;
+    margin-left: -4.55%;
+    animation:showy 1s ease infinite;
+    -webkit-animation:showy 1s ease infinite;
+}
+
+.download{
+    position: absolute;
+    height: 7%;
+    padding: 6px;
+    background-color: #2A89CB;
+    border-radius: 6%;
+    border: #2A89CB solid 1px;
+}
+
+.download img{
+    width: 100%;
+}
