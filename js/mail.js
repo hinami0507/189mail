@@ -79,10 +79,10 @@ Slider.prototype.renderDOM = function() {
                 li.setAttribute("id", "galfirst");
                 li.style.width= this.scaleW+'px';
                 li.innerHTML += '<img id="galr" src="./img/pic_1.png" class="mainhead"  style="margin-top:' + this.scaleH * 0.0567 + 'px;width:'+this.scaleH * 0.561 +'px;left:'+(this.scaleW - this.scaleH * 0.561) * 0.5+'px"/>';
-                li.innerHTML += '<button class="download" style="margin-top:' + this.scaleH * 0.3112 + 'px"><img src="./img/button.png"/></button>';
+                li.innerHTML += '<button class="download" style="margin-top:' + this.scaleH * 0.3112 + 'px;height:'+this.scaleH * 0.0576 + 'px;width:'+this.scaleH * 0.2111 +'px;left:'+(this.scaleW-this.scaleH * 0.2111)*0.5+'px"><img src="./img/button.png"/></button>';
             }
             if (i == 4) {
-                li.innerHTML += '<button class="download" style="margin-top:' + this.scaleH * 0.4824 + 'px"><img src="./img/button.png"/></button>';
+                li.innerHTML += '<button class="download" style="margin-top:' + this.scaleH * 0.4824 + 'px;height:'+this.scaleH * 0.0576 + 'px;width:'+this.scaleH * 0.2111 +'px;left:'+(this.scaleW-this.scaleH * 0.2111)*0.5+'px"><img src="./img/button.png"/></button>';
             }
             //==============
             if (i != 0) {
@@ -289,26 +289,6 @@ new Slider({
     dom: document.getElementById('canvas'),
     list: list
 });
-
-
-
-var canvas = document.getElementById("canvas");
-var canWidth = canvas.offsetWidth;
-var canHeight = canvas.offsetHeight;
-
-
-
-
-var download = document.getElementsByClassName('download');
-var downlen = download.length;
-for (var d = 0; d < downlen; d++) {
-    download[d].style.height = canHeight * 0.0576 + 'px';
-    download[d].style.width = canHeight * 0.2111 + 'px';
-    download[d].style.left = (canWidth - download[d].offsetWidth) * 0.5 + 'px';
-}
-
-
-
 
 
 
