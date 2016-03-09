@@ -39,6 +39,7 @@ Slider.prototype.init = function() {
     this.radio = window.innerHeight / window.innerWidth;
     //设定一页的宽度
     this.scaleH = window.innerHeight;
+    this.scaleW = window.innerWidth;
     //设定初始的索引值
     this.idx = 0;
 };
@@ -51,6 +52,7 @@ Slider.prototype.renderDOM = function() {
 
     this.outer = document.createElement('ul');
     this.outer.setAttribute("id", "gal")
+    this.outer.style.width = this.scaleH * 0.561 + 'px'
         //创建导航
     this.nav = document.createElement('ul');
     this.nav.setAttribute("id", "nav");
@@ -60,11 +62,12 @@ Slider.prototype.renderDOM = function() {
         //设置索引灯的索引
         var navli = document.createElement('li');
         navli.setAttribute("navIdx", i);
-
+        navli.style.height =navli.style.width = this.scaleH*0.02+'px'; //设置导航灯的宽和高
+        
         var li = document.createElement('li');
 
         var item = data[i];
-        li.style.height = window.innerHeight + 'px';
+        li.style.height = this.scaleH + 'px';
         li.style.webkitTransform = 'translate3d(0,' + i * this.scaleH + 'px, 0)';
 
         if (item) {
@@ -74,23 +77,24 @@ Slider.prototype.renderDOM = function() {
             //渲染head
             if (i == 0) {
                 li.setAttribute("id", "galfirst");
-                li.innerHTML += '<img id="galr" src="./img/pic_1.png" class="mainhead"  style="margin-top:' + window.innerHeight * 0.0567 + 'px"/>';
-                li.innerHTML += '<button class="download" style="margin-top:' + window.innerHeight * 0.3112 + 'px"><img src="./img/button.png"/></button>';
+                li.style.width= this.scaleW+'px';
+                li.innerHTML += '<img id="galr" src="./img/pic_1.png" class="mainhead"  style="margin-top:' + this.scaleH * 0.0567 + 'px;width:'+this.scaleH * 0.561 +'px;left:'+(this.scaleW - this.scaleH * 0.561) * 0.5+'px"/>';
+                li.innerHTML += '<button class="download" style="margin-top:' + this.scaleH * 0.3112 + 'px"><img src="./img/button.png"/></button>';
             }
             if (i == 4) {
-                li.innerHTML += '<button class="download" style="margin-top:' + window.innerHeight * 0.4824 + 'px"><img src="./img/button.png"/></button>';
+                li.innerHTML += '<button class="download" style="margin-top:' + this.scaleH * 0.4824 + 'px"><img src="./img/button.png"/></button>';
             }
             //==============
             if (i != 0) {
                 if (item['height'] / item['width'] > this.radio) {
-                    li.innerHTML += '<img height="' + window.innerHeight + '" src="' + item['img'] + '">';
+                    li.innerHTML += '<img height="' + this.scaleH + '" src="' + item['img'] + '">';
                 } else {
-                    li.innerHTML += '<img width="' + window.innerHeight * 0.561 + '" src="' + item['img'] + '">';
+                    li.innerHTML += '<img width="' + this.scaleH * 0.561 + '" src="' + item['img'] + '">';
                 }
             } else {
 
                 if (item['height'] / item['width'] > this.radio) {
-                    li.innerHTML += '<img height="' + window.innerHeight + '" src="' + item['img'] + '">';
+                    li.innerHTML += '<img height="' + this.scaleH + '" src="' + item['img'] + '">';
                 } else {
                     li.innerHTML += '<img width="' + window.innerWidth + '" src="' + item['img'] + '">';
                 }
@@ -104,7 +108,7 @@ Slider.prototype.renderDOM = function() {
 
     //UL的宽度和画布宽度一致
     this.outer.style.cssText = 'height:' + this.scaleH + 'px';
-    wrap.style.height = window.innerHeight + 'px';
+    wrap.style.height = this.scaleH + 'px';
     wrap.appendChild(this.outer);
     wrap.appendChild(this.nav);
 
@@ -287,23 +291,13 @@ new Slider({
 });
 
 
-var navli = document.getElementById('nav');
-var len = navli.children.length;
-for (var i = 0; i < len; i++) {
-    navli.children[i].style.height = navli.children[i].scrollWidth + 'px';
-}
-var gal = document.getElementById("gal");
-gal.style.width = gal.offsetHeight * 0.561 + 'px';
-var galr = document.getElementById("galr");
-galr.style.width = gal.offsetHeight * 0.561 + 'px';
 
 var canvas = document.getElementById("canvas");
 var canWidth = canvas.offsetWidth;
 var canHeight = canvas.offsetHeight;
 
-galr.style.left = (canWidth - galr.offsetWidth) * 0.5 + 'px';
-var galfirst = document.getElementById("galfirst");
-galfirst.style.width = canWidth + 'px';
+
+
 
 var download = document.getElementsByClassName('download');
 var downlen = download.length;
